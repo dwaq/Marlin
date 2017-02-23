@@ -149,7 +149,8 @@
 #define Z_MIN_PIN 36
 #endif
 
-#define PBNEO_PIN 6
+#define BOT_LIGHT_LEDS 3
+#define BOT_LIGHT_PIN 4
 
 #define TEMP_0_PIN 1  // Extruder / Analog pin numbering
 #define TEMP_BED_PIN 0  // Bed / Analog pin numbering

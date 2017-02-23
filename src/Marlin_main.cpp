@@ -47,8 +47,9 @@
 #include "language.h"
 #include "pins_arduino.h"
 #include "math.h"
+#include "botlight.h"
 #include <avr/boot.h>
-
+#include <ArduinoJson.h>
 
 
 #if NUM_SERVOS > 0
@@ -291,6 +292,8 @@ bool Stopped=false;
 
 bool CooldownNoWait = true;
 bool target_direction;
+
+BotLight botLight;
 
 //===========================================================================
 //=============================ROUTINES=============================
@@ -2647,6 +2650,63 @@ void process_commands()
       PID_autotune(temp, e, c);
     }
     break;
+
+    case 355:
+      if (code_seen('S')) {
+        uint8_t state = code_value();
+        if (state == 1) {
+
+          if (code_seen('C')) {
+            uint8_t color = code_value();
+            switch(color) {
+              case 1:
+                //red
+                botLight.setColor(255,0,0,0);
+                break;
+              case 2:
+                //green
+                botLight.setColor(0,255,0,0);
+                break;
+              case 3:
+                //blue
+                botLight.setColor(0,0,255,0);
+                break;
+              case 4:
+                //white
+                botLight.setColor(255,255,255,255);
+                break;
+              case 5:
+                //yellow
+                botLight.setColor(255,255,0,0);
+                break;
+              case 6:
+                //magenta
+                botLight.setColor(255,0,255,0);
+                break;
+              case 7:
+                //cyan
+                botLight.setColor(0,255,255,0);
+                break;
+              default:
+                botLight.setColor(255,255,255,255);
+                break;
+            }
+          } else {
+            // set color to default white
+            botLight.setColor(255,255,255,255);
+          }
+
+          if (code_seen('B')) {
+            uint8_t brightness = code_value();
+            botLight.setBrightness(brightness);
+          }
+        }
+        else if (state == 0) {
+          botLight.turnOff();
+        }
+      }
+      break;
+
     case 400: // M400 finish all moves
     {
       st_synchronize();
