@@ -324,6 +324,11 @@ const bool E_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   #define X_MAX_POS_DEFAULT 250
   #define Y_MAX_POS_DEFAULT 250
   #define Z_MAX_POS_DEFAULT 254
+#elif defined(PB_PROST)
+  #define X_MAX_POS_DEFAULT 250
+  #define Y_MAX_POS_DEFAULT 250
+  #define Z_MAX_POS_DEFAULT 457
+  #define VIKI2
 #elif defined(PB_MCF)
   #define X_MAX_POS_DEFAULT 230
   #define Y_MAX_POS_DEFAULT 160
@@ -439,6 +444,10 @@ const bool E_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
   #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,2020,6666}
   #define DEFAULT_MAX_FEEDRATE          {125, 125, 5, 14}
   #define DEFAULT_MAX_ACCELERATION      {200,200,30,3000}
+#elif defined(PB_PROST)
+  #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,400,6666}
+  #define DEFAULT_MAX_FEEDRATE          {125, 125, 5, 14}
+  #define DEFAULT_MAX_ACCELERATION      {200,200,30,3000}
 #else
   #define DEFAULT_AXIS_STEPS_PER_UNIT   {80,80,2020,96}
   #define DEFAULT_MAX_FEEDRATE          {125, 125, 5, 14}
@@ -503,6 +512,23 @@ const bool E_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 
 //#define ULTIMAKERCONTROLLER //as available from the ultimaker online store.
 #define ULTIPANEL  //the ultipanel as on thingiverse
+
+#ifdef VIKI2
+  #define ULTRA_LCD  //general LCD support, also 16x2
+  #define DOGLCD  // Support for SPI LCD 128x64 (Controller ST7565R graphic Display Family)
+  #define ULTIMAKERCONTROLLER //as available from the Ultimaker online store.
+
+  #define DEFAULT_LCD_CONTRAST 40
+
+  #ifndef ENCODER_PULSES_PER_STEP
+    #define ENCODER_PULSES_PER_STEP 4
+  #endif
+
+  #ifndef ENCODER_STEPS_PER_MENU_ITEM
+    #define ENCODER_STEPS_PER_MENU_ITEM 1
+  #endif
+#endif
+
 
 #ifdef ULTIPANEL
 //  #define NEWPANEL  //enable this if you have a click-encoder panel

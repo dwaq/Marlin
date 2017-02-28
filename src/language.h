@@ -22,6 +22,8 @@
 	#define MACHINE_NAME "Printrbot Simple"
 #elif defined(PB_PLUS)
 	#define MACHINE_NAME "Printrbot Plus"
+#elif defined(PB_PROST)
+  #define MACHINE_NAME "Printrbot Prosthetics"
 #elif defined(PB_MCF)
 	#define MACHINE_NAME "Magic Candy Factory"
 #elif defined(PB_BOCUSINI)

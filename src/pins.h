@@ -108,13 +108,13 @@
 #define E0_DIR_PIN          7
 #define E0_ENABLE_PIN      19
 
-#define E1_STEP_PIN        24
-#define E1_DIR_PIN         25
-#define E1_ENABLE_PIN      44
+#define E1_STEP_PIN        -1
+#define E1_DIR_PIN         -1
+#define E1_ENABLE_PIN      -1
 
-#define E2_STEP_PIN        26
-#define E2_DIR_PIN         27
-#define E2_ENABLE_PIN      45
+#define E2_STEP_PIN        -1
+#define E2_DIR_PIN         -1
+#define E2_ENABLE_PIN      -1
 
 #define HEATER_0_PIN       21  // Extruder
 #define HEATER_1_PIN       46
@@ -123,7 +123,7 @@
 
 
 #define FAN_PIN        16
-#define EXTRUDER_0_AUTO_FAN_PIN   44
+#define EXTRUDER_0_AUTO_FAN_PIN   -1
 
 #define EXTRUDER_1_AUTO_FAN_PIN   -1
 #define EXTRUDER_2_AUTO_FAN_PIN   -1
@@ -149,12 +149,32 @@
 #define Z_MIN_PIN 36
 #endif
 
+#if defined(VIKI2)
+  #define BEEPER 32 // FastIO
+  #define DOGLCD_A0  42 // Non-FastIO
+  #define DOGLCD_CS  43 // Non-FastIO
+  #define LCD_SCREEN_ROT_180
+
+  // (FastIO Pins)
+  #define BTN_EN1 26
+  #define BTN_EN2 27
+  #define BTN_ENC 47
+
+  #define SDSS 44
+  #define SDCARDDETECT -1 // FastIO (Manual says 72)
+
+  #define STAT_LED_RED  12 // Non-FastIO
+  #define STAT_LED_BLUE 10 // Non-FastIO
+#else
+  #define SDSS 20
+#endif
+
 #define BOT_LIGHT_LEDS 3
 #define BOT_LIGHT_PIN 4
 
 #define TEMP_0_PIN 1  // Extruder / Analog pin numbering
 #define TEMP_BED_PIN 0  // Bed / Analog pin numbering
-#define SDSS 20
+
 
 
 #define TEMP_1_PIN         2
@@ -172,7 +192,6 @@
 #define DAC_STEPPER_GAIN	0
 
 #ifdef ULTRA_LCD
-  #define BEEPER -1
 
   #define LCD_PINS_RS 9
   #define LCD_PINS_ENABLE 8
@@ -181,9 +200,12 @@
   #define LCD_PINS_D6 5
   #define LCD_PINS_D7 4
 
+#ifndef VIKI2
+  #define BEEPER -1
   #define BTN_EN1   16
   #define BTN_EN2   17
   #define BTN_ENC   18//the click
+#endif
 
   #define BLEN_C 2
   #define BLEN_B 1

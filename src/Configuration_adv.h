@@ -279,6 +279,8 @@
   #define DAC_STEPPER_CURRENT {70,70,60,60,60}
 #elif defined(PB_PLUS)
   #define DAC_STEPPER_CURRENT {60,65,60,65,65}
+#elif defined(PB_PROST)
+  #define DAC_STEPPER_CURRENT {60,65,60,65,65}
 #elif defined(PB_MCF)
   #define DAC_STEPPER_CURRENT {20,20,20,20,20}
 #elif defined(PB_BOCUSINI)

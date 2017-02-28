@@ -83,8 +83,7 @@ int lcd_contrast;
 #elif defined(U8GLIB_SSD1306)
   U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_DEV_0|U8G_I2C_OPT_NO_ACK|U8G_I2C_OPT_FAST);
 	//U8GLIB_SSD1306_128X64 u8g(U8G_I2C_OPT_NONE|U8G_I2C_OPT_DEV_0);
-#elif defined(MAKRPANEL)
-	// The MaKrPanel display, ST7565 controller as well
+#elif defined(VIKI2)
 	U8GLIB_NHD_C12864 u8g(DOGLCD_CS, DOGLCD_A0);
 #else
 	// for regular DOGM128 display with HW-SPI
