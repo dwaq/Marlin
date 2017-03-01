@@ -405,6 +405,46 @@ void suicide()
   #endif
 }
 
+void play_bootup_sound() {
+  tone(BEEPER,261.63);  // C4
+  delay(400);
+  noTone(BEEPER);
+  delay(200);
+
+  tone(BEEPER,261.63);  // C4
+  delay(200);
+
+  tone(BEEPER, 311.13); // Eb4
+  delay(200);
+
+  tone(BEEPER,261.63);  // C4
+  delay(200);
+
+  tone(BEEPER, 311.13); // Eb4
+  delay(200);
+
+  tone(BEEPER,261.63);  // C4
+  delay(200);
+
+  tone(BEEPER, 196.00); // G3
+  delay(400);
+  noTone(BEEPER);
+  delay(200);
+
+  tone(BEEPER, 196.00); // G3
+  delay(200);
+
+  tone(BEEPER, 233.08); // Bb3
+  delay(200);
+
+  tone(BEEPER, 196.00); // G3
+  delay(200);
+
+  tone(BEEPER, 233.08); // Bb3
+  delay(400);
+  noTone(BEEPER);
+}
+
 void servo_init()
 {
   #if (NUM_SERVOS >= 1) && defined(SERVO0_PIN) && (SERVO0_PIN > -1)
@@ -509,6 +549,7 @@ void setup()
   #endif
   #if defined(VIKI2)
     setup_led_pins();
+    play_bootup_sound();
     digitalWrite(STAT_LED_BLUE, 1);
   #endif
 }
