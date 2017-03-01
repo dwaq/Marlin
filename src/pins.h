@@ -92,7 +92,7 @@
 //Disable JTAG pins so they can be used for the Extrudrboard
 #define DISABLE_JTAG       true
 
-#define X_STEP_PIN          0
+#define X_STEP_PIN          0 // FastIO ...
 #define X_DIR_PIN           1
 #define X_ENABLE_PIN       39
 
@@ -117,14 +117,13 @@
 #define E2_ENABLE_PIN      -1
 
 #define HEATER_0_PIN       21  // Extruder
-#define HEATER_1_PIN       46
-#define HEATER_2_PIN       47
+#define HEATER_1_PIN       -1
+#define HEATER_2_PIN       -1
 #define HEATER_BED_PIN     20  // Bed
 
 
 #define FAN_PIN        16
 #define EXTRUDER_0_AUTO_FAN_PIN   -1
-
 #define EXTRUDER_1_AUTO_FAN_PIN   -1
 #define EXTRUDER_2_AUTO_FAN_PIN   -1
 
@@ -150,35 +149,37 @@
 #endif
 
 #if defined(VIKI2)
-  #define BEEPER 32 // FastIO
-  #define DOGLCD_A0  42 // Non-FastIO
-  #define DOGLCD_CS  43 // Non-FastIO
+  #define BEEPER 41 // Marlin
+  #define DOGLCD_A0  42 // Marlin
+  #define DOGLCD_CS  43 // Marlin
   #define LCD_SCREEN_ROT_180
 
-  // (FastIO Pins)
-  #define BTN_EN1 26
-  #define BTN_EN2 27
-  #define BTN_ENC 47
+  #define BTN_EN1 26 // FastIO
+  #define BTN_EN2 27 // FastIO
+  #define BTN_ENC 47 // FastIO
 
-  #define SDSS 44
-  #define SDCARDDETECT -1 // FastIO (Manual says 72)
+  #define SDSS 44 // Marlin
+  #define SDCARDDETECT -1 // FastIO
 
-  #define STAT_LED_RED  12 // Non-FastIO
-  #define STAT_LED_BLUE 10 // Non-FastIO
+  #define STAT_LED_RED  25 // Marlin
+  #define STAT_LED_BLUE 37 // Marlin
+
+  #define BOT_LIGHT_LEDS -1
+  #define BOT_LIGHT_PIN -1
+
 #else
   #define SDSS 20
+  #define BOT_LIGHT_LEDS 3
+  #define BOT_LIGHT_PIN 4
 #endif
-
-#define BOT_LIGHT_LEDS 3
-#define BOT_LIGHT_PIN 4
 
 #define TEMP_0_PIN 1  // Extruder / Analog pin numbering
 #define TEMP_BED_PIN 0  // Bed / Analog pin numbering
 
 
 
-#define TEMP_1_PIN         2
-#define TEMP_2_PIN         3
+#define TEMP_1_PIN         -1
+#define TEMP_2_PIN         -1
 
 #define SDPOWER            -1
 #define LED_PIN            -1
