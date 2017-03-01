@@ -599,14 +599,9 @@ static void lcd_implementation_quick_feedback()
 {
 
 #if BEEPER > -1
-    SET_OUTPUT(BEEPER);
-    for(int8_t i=0;i<10;i++)
-    {
-		WRITE(BEEPER,HIGH);
-		delay(3);
-		WRITE(BEEPER,LOW);
-		delay(3);
-    }
+  tone(BEEPER, 257);
+  delay(10);
+  noTone(BEEPER);
 #endif
 }
 #endif//ULTRA_LCD_IMPLEMENTATION_DOGM_H
