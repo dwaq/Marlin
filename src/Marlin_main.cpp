@@ -375,6 +375,12 @@ void setup_photpin()
   #endif
 }
 
+void setup_led_pins()
+{
+  pinMode(STAT_LED_RED, OUTPUT);
+  pinMode(STAT_LED_BLUE, OUTPUT);
+}
+
 void setup_powerhold()
 {
   #if defined(SUICIDE_PIN) && SUICIDE_PIN > -1
@@ -500,6 +506,10 @@ void setup()
 
   #if defined(CONTROLLERFAN_PIN) && CONTROLLERFAN_PIN > -1
     SET_OUTPUT(CONTROLLERFAN_PIN); //Set pin used for driver cooling fan
+  #endif
+  #if defined(VIKI2)
+    setup_led_pins();
+    digitalWrite(STAT_LED_BLUE, 1);
   #endif
 }
 
