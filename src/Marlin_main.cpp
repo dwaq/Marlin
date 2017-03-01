@@ -2896,12 +2896,9 @@ void process_commands()
           if(cnt==0)
           {
           #if BEEPER > 0
-            SET_OUTPUT(BEEPER);
-
-            WRITE(BEEPER,HIGH);
-            delay(3);
-            WRITE(BEEPER,LOW);
-            delay(3);
+            tone(BEEPER, 257);
+            delay(20);
+            noTone(BEEPER);
           #else
             lcd_buzz(1000/6,100);
           #endif
